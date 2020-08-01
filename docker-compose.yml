@@ -1,0 +1,21 @@
+version: "3.1"
+
+services:
+  service:
+    image: service
+    environment:
+      APP_PORT=8080
+      DEBUG=true
+    volumes:
+      - ~/shared:/data
+    ports:
+      - $APP_PORT:$APP_PORT
+
+
+  sidecar:
+    image: sidecar
+    volumes:
+      - ~/shared:/data
+
+volumes:
+  data:
